@@ -2,9 +2,9 @@
 setlocal
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0install_autostart.ps1"
 if errorlevel 1 (
-  echo 自动启动安装失败。
+  echo Autostart installation failed.
   pause
   exit /b 1
 )
-echo 已安装开机自动桥接。
+echo Autostart bridge installed.
 pause

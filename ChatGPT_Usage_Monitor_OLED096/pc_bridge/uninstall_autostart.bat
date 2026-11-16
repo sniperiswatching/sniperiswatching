@@ -2,9 +2,9 @@
 setlocal
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0uninstall_autostart.ps1"
 if errorlevel 1 (
-  echo 自动启动卸载失败。
+  echo Autostart removal failed.
   pause
   exit /b 1
 )
-echo 已取消开机自动桥接。
+echo Autostart bridge removed.
 pause
