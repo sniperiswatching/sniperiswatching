@@ -2,12 +2,12 @@ $ErrorActionPreference = "Stop"
 
 $bridge = Join-Path $PSScriptRoot "bridge.py"
 if (-not (Test-Path -LiteralPath $bridge)) {
-    throw "找不到 bridge.py：$bridge"
+    throw "bridge.py was not found: $bridge"
 }
 
 $startup = [Environment]::GetFolderPath("Startup")
 if ([string]::IsNullOrWhiteSpace($startup)) {
-    throw "找不到当前用户的 Windows 启动目录"
+    throw "The Windows Startup folder was not found"
 }
 
 $link = Join-Path $startup "ChatGPT_Usage_Monitor_OLED096_Bridge.lnk"
@@ -28,5 +28,5 @@ $shortcut.WindowStyle = 7
 $shortcut.Description = "ChatGPT Usage OLED096 bridge"
 $shortcut.Save()
 
-Write-Host "已创建自动启动项：$link"
-Write-Host "桥接脚本：$bridge"
+Write-Host "Autostart shortcut created: $link"
+Write-Host "Bridge script: $bridge"
