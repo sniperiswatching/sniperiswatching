@@ -17,6 +17,10 @@
     │  ├─ bridge.py
     │  ├─ start_bridge.bat
     │  ├─ stop_bridge.bat
+    │  ├─ install_autostart.bat
+    │  ├─ install_autostart.ps1
+    │  ├─ uninstall_autostart.bat
+    │  ├─ uninstall_autostart.ps1
     │  └─ tasks.json
     ├─ edge_extension/
     │  ├─ manifest.json
@@ -117,13 +121,23 @@ OLED 的地址默认写成 0x3C。如果屏幕完全没有响应，可以把固�
 
 没有可用数据时屏幕显示 --%，并标记“等待 Usage 数据”或“电脑桥接离线”。
 
-## 电脑开机后自动启动
+## 电脑开机后自动启动桥接
 
-如果需要开机后自动运行桥接服务，可以把 start_bridge.bat 的快捷方式放到：
+在电脑上只需要安装一次自动启动项。进入 pc_bridge 文件夹，双击：
 
-    Win + R → shell:startup
+    install_autostart.bat
 
-Edge 的 Usage 页面也需要保持登录和打开状态。浏览器扩展只会读取当前页面上已经显示的文字，网页关闭或页面结构变化时，屏幕会显示数据过期或等待数据。
+这个脚本会在当前 Windows 用户的启动目录创建一个隐藏运行的桥接快捷方式。以后每次 Windows 登录后，bridge.py 会自动启动并监听 8765 端口。
+
+用浏览器打开下面的地址检查自动桥接是否正常：
+
+    http://127.0.0.1:8765/health
+
+如果看到 ok 为 true，说明电脑桥接服务已经运行。需要取消自动启动时，双击：
+
+    uninstall_autostart.bat
+
+手动启动仍然可以使用 start_bridge.bat，停止当前服务可以使用 stop_bridge.bat。Edge 的 Usage 页面需要保持登录和打开状态。浏览器扩展只会读取当前页面上已经显示的文字，网页关闭或页面结构变化时，屏幕会显示数据过期或等待数据。
 
 ## 故障排查
 
