@@ -32,7 +32,7 @@
     const remaining = Number(percentage[1]);
     if (!Number.isInteger(remaining) || remaining < 0 || remaining > 100) return null;
 
-    const reset = section.match(/((?:约\s*)?[\d\s]*(?:天|小时|分钟)[\d\s天小时分钟]*)\s*后重置/);
+    const reset = section.match(/((?:约\s*)?[\d\s]*(?:天|小时|分钟|分)[\d\s天小时分钟分]*)\s*后重置/);
     return {
       remaining,
       reset: reset ? reset[1].replace(/\s+/g, "").replace(/^约/, "约") : "--"
