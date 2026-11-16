@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720">
+  <defs>
+    <linearGradient id="desk" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b5794c"/>
+      <stop offset="1" stop-color="#d8a876"/>
+    </linearGradient>
+    <linearGradient id="stand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#edf8ff" stop-opacity=".88"/>
+      <stop offset="1" stop-color="#9db7c5" stop-opacity=".7"/>
+    </linearGradient>
+    <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+
+  <rect width="1000" height="720" fill="url(#desk)"/>
+  <ellipse cx="375" cy="617" rx="210" ry="23" fill="#5f3f2d" opacity=".45" filter="url(#shadow)"/>
+
+  <!-- acrylic stand -->
+  <path d="M173 572h397l-34 65H208z" fill="url(#stand)" stroke="#78909e" stroke-width="4"/>
+  <path d="M205 556h333l-16 36H221z" fill="#f4fbff" opacity=".72" stroke="#8ba2af" stroke-width="3"/>
+
+  <!-- OLED module -->
+  <rect x="160" y="104" width="425" height="450" rx="18" fill="#0c638e" stroke="#c8e9f3" stroke-width="7"/>
+  <rect x="188" y="132" width="369" height="184" rx="7" fill="#020609" stroke="#bfcbd0" stroke-width="7"/>
+  <rect x="208" y="148" width="329" height="152" fill="#000"/>
+  <circle cx="180" cy="123" r="11" fill="#e6edf1" stroke="#607784" stroke-width="3"/>
+  <circle cx="565" cy="123" r="11" fill="#e6edf1" stroke="#607784" stroke-width="3"/>
+  <circle cx="180" cy="535" r="11" fill="#e6edf1" stroke="#607784" stroke-width="3"/>
+  <circle cx="565" cy="535" r="11" fill="#e6edf1" stroke="#607784" stroke-width="3"/>
+
+  <!-- enlarged OLED content -->
+  <text x="225" y="172" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">ChatGPT 额度监控</text>
+  <text x="503" y="172" fill="#9cffc7" font-family="Arial, sans-serif" font-size="10">WiFi</text>
+  <line x1="220" y1="180" x2="524" y2="180" stroke="#39454b"/>
+  <text x="223" y="201" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15">5小时限额</text>
+  <text x="470" y="203" fill="#6dffa4" font-family="Arial, sans-serif" font-size="19" font-weight="700">30%</text>
+  <rect x="222" y="211" width="300" height="7" rx="3" fill="#394b54"/>
+  <rect x="224" y="213" width="88" height="3" rx="2" fill="#21ed83"/>
+  <text x="223" y="245" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="15">每周限额</text>
+  <text x="470" y="247" fill="#59c9ff" font-family="Arial, sans-serif" font-size="19" font-weight="700">89%</text>
+  <rect x="222" y="255" width="300" height="7" rx="3" fill="#394b54"/>
+  <rect x="224" y="257" width="266" height="3" rx="2" fill="#29bfff"/>
+  <text x="223" y="288" fill="#d4e7ed" font-family="Arial, Microsoft YaHei, sans-serif" font-size="11">实时同步 · 每 15 秒刷新</text>
+
+  <text x="225" y="365" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="24" font-weight="700">0.96 英寸 SSD1306 OLED</text>
+  <text x="225" y="396" fill="#d8f3ff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">ESP32-S3 Wi-Fi 额度摆件</text>
+
+  <!-- pin labels -->
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="17" font-weight="700">
+    <text x="630" y="200" fill="#1b2024">GND</text>
+    <text x="630" y="240" fill="#f22e2e">VCC</text>
+    <text x="630" y="280" fill="#2e78ff">SCL</text>
+    <text x="630" y="320" fill="#1bbd9a">SDA</text>
+  </g>
+  <g stroke-linecap="round" stroke-width="7">
+    <path d="M585 194h45" stroke="#1b2024"/>
+    <path d="M585 234h45" stroke="#f22e2e"/>
+    <path d="M585 274h45" stroke="#2e78ff"/>
+    <path d="M585 314h45" stroke="#1bbd9a"/>
+  </g>
+
+  <!-- callout -->
+  <rect x="670" y="410" width="260" height="132" rx="16" fill="#08131a" opacity=".9" stroke="#b9e7f5" stroke-width="2"/>
+  <text x="695" y="445" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="17" font-weight="700">照片风格适配</text>
+  <text x="695" y="474" fill="#9ee6ff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="14">深色背景 · 双额度卡片</text>
+  <text x="695" y="500" fill="#9ee6ff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="14">绿色 5 小时 · 蓝色每周</text>
+  <text x="695" y="526" fill="#ffdd88" font-family="Arial, Microsoft YaHei, sans-serif" font-size="14">I²C 四线接法</text>
+
+  <text x="500" y="686" text-anchor="middle" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="21" font-weight="700">ESP32-S3 + 0.96 英寸 OLED ChatGPT 额度摆件效果图</text>
+</svg>
+
