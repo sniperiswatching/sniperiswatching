@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <rect width="1400" height="900" fill="#f7f9fb"/>
+  <text x="700" y="58" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#15222b">ESP32-S3 N16R8 ↔ 2 英寸 ST7789 SPI 接线图</text>
+  <text x="700" y="94" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="19" fill="#52636e">按照片中的屏幕右侧针脚从上到下绘制，SDA 是 MOSI，SCL 是 SCK</text>
+
+  <rect x="86" y="150" width="420" height="600" rx="24" fill="#1d2b35" stroke="#3b5968" stroke-width="6"/>
+  <text x="296" y="194" text-anchor="middle" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="26" font-weight="700">ESP32-S3 N16R8</text>
+  <text x="296" y="224" text-anchor="middle" fill="#a9d3e4" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">天线朝上、USB 在下时的 GPIO 丝印</text>
+  <g font-family="Arial, sans-serif" font-size="22" fill="#fff">
+    <rect x="118" y="270" width="356" height="48" rx="8" fill="#3a4c58"/><text x="140" y="302">GND</text>
+    <rect x="118" y="342" width="356" height="48" rx="8" fill="#3a4c58"/><text x="140" y="374">3V3</text>
+    <rect x="118" y="414" width="356" height="48" rx="8" fill="#3a4c58"/><text x="140" y="446">GPIO12</text>
+    <rect x="118" y="486" width="356" height="48" rx="8" fill="#3a4c58"/><text x="140" y="518">GPIO11</text>
+    <rect x="118" y="558" width="356" height="48" rx="8" fill="#3a4c58"/><text x="140" y="590">GPIO14</text>
+    <rect x="118" y="630" width="356" height="48" rx="8" fill="#3a4c58"/><text x="140" y="662">GPIO13</text>
+    <rect x="118" y="702" width="356" height="48" rx="8" fill="#3a4c58"/><text x="140" y="734">GPIO10</text>
+  </g>
+
+  <rect x="894" y="150" width="420" height="600" rx="24" fill="#0b5f8e" stroke="#2e8fb9" stroke-width="6"/>
+  <text x="1104" y="194" text-anchor="middle" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="26" font-weight="700">ST7789 模块</text>
+  <text x="1104" y="224" text-anchor="middle" fill="#d2f1ff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">屏幕右侧从上到下</text>
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="22" fill="#fff">
+    <rect x="926" y="270" width="356" height="48" rx="8" fill="#1b789f"/><text x="950" y="302">1  GND</text>
+    <rect x="926" y="342" width="356" height="48" rx="8" fill="#1b789f"/><text x="950" y="374">2  VCC</text>
+    <rect x="926" y="414" width="356" height="48" rx="8" fill="#1b789f"/><text x="950" y="446">3  SCL / SCK</text>
+    <rect x="926" y="486" width="356" height="48" rx="8" fill="#1b789f"/><text x="950" y="518">4  SDA / MOSI</text>
+    <rect x="926" y="558" width="356" height="48" rx="8" fill="#1b789f"/><text x="950" y="590">5  RES</text>
+    <rect x="926" y="630" width="356" height="48" rx="8" fill="#1b789f"/><text x="950" y="662">6  DC</text>
+    <rect x="926" y="702" width="356" height="48" rx="8" fill="#1b789f"/><text x="950" y="734">7  CS</text>
+  </g>
+
+  <g fill="none" stroke-width="8" stroke-linecap="round">
+    <path d="M474 294 C650 294 750 294 926 294" stroke="#20252a"/>
+    <path d="M474 366 C650 366 750 366 926 366" stroke="#e33131"/>
+    <path d="M474 438 C650 438 750 438 926 438" stroke="#2a78ff"/>
+    <path d="M474 510 C650 510 750 510 926 510" stroke="#24cba8"/>
+    <path d="M474 582 C650 582 750 582 926 582" stroke="#ae54ff"/>
+    <path d="M474 654 C650 654 750 654 926 654" stroke="#ff9c28"/>
+    <path d="M474 726 C650 726 750 726 926 726" stroke="#ffe32a"/>
+  </g>
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" fill="#34434c">
+    <text x="700" y="276" text-anchor="middle">GND → GND</text>
+    <text x="700" y="348" text-anchor="middle">3V3 → VCC</text>
+    <text x="700" y="420" text-anchor="middle">GPIO12 → SCL / SCK</text>
+    <text x="700" y="492" text-anchor="middle">GPIO11 → SDA / MOSI</text>
+    <text x="700" y="564" text-anchor="middle">GPIO14 → RES</text>
+    <text x="700" y="636" text-anchor="middle">GPIO13 → DC</text>
+    <text x="700" y="708" text-anchor="middle">GPIO10 → CS</text>
+  </g>
+
+  <rect x="86" y="790" width="1228" height="68" rx="14" fill="#fff5d8" stroke="#e5b83c" stroke-width="3"/>
+  <text x="110" y="822" fill="#6f5200" font-family="Arial, Microsoft YaHei, sans-serif" font-size="19" font-weight="700">BLK 背光：按屏幕模块规格连接。</text>
+  <text x="110" y="848" fill="#6f5200" font-family="Arial, Microsoft YaHei, sans-serif" font-size="17">照片无法判断背光电路是否带限流，固件不占用 GPIO 驱动 BLK，规格不明时先不要接 5V。</text>
+</svg>
