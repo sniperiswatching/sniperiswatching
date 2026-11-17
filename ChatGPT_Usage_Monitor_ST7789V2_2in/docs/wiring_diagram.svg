@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <rect width="1400" height="1000" fill="#f7f9fb"/>
+  <text x="700" y="58" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="34" font-weight="700" fill="#15222b">ESP32-S3 N16R8 ↔ 2 英寸 ST7789V2 4-SPI 接线图</text>
+  <text x="700" y="94" text-anchor="middle" font-family="Arial, Microsoft YaHei, sans-serif" font-size="19" fill="#52636e">按照片中的屏幕右侧针脚从上到下绘制，SCL 是 SPI SCK，SDA 是 SPI MOSI</text>
+
+  <rect x="70" y="145" width="470" height="700" rx="24" fill="#1d2b35" stroke="#3b5968" stroke-width="6"/>
+  <text x="305" y="190" text-anchor="middle" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="27" font-weight="700">ESP32-S3 N16R8</text>
+  <text x="305" y="220" text-anchor="middle" fill="#a9d3e4" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">天线朝上、USB 在下时的 GPIO</text>
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="22" fill="#fff">
+    <rect x="106" y="250" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="285">GND</text>
+    <rect x="106" y="330" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="365">3V3</text>
+    <rect x="106" y="410" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="445">GPIO12</text>
+    <rect x="106" y="490" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="525">GPIO11</text>
+    <rect x="106" y="570" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="605">GPIO14</text>
+    <rect x="106" y="650" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="685">GPIO13</text>
+    <rect x="106" y="730" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="765">GPIO10</text>
+    <rect x="106" y="810" width="398" height="54" rx="8" fill="#3a4c58"/><text x="132" y="845">按模块规格</text>
+  </g>
+
+  <rect x="890" y="145" width="440" height="700" rx="24" fill="#0b5f8e" stroke="#2e8fb9" stroke-width="6"/>
+  <text x="1110" y="190" text-anchor="middle" fill="#fff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="27" font-weight="700">ST7789V2 TFT</text>
+  <text x="1110" y="220" text-anchor="middle" fill="#d2f1ff" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">4-SPI 模块右侧从上到下</text>
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="22" fill="#fff">
+    <rect x="924" y="250" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="285">1  GND</text>
+    <rect x="924" y="330" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="365">2  VCC</text>
+    <rect x="924" y="410" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="445">3  SCL / SCK</text>
+    <rect x="924" y="490" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="525">4  SDA / MOSI</text>
+    <rect x="924" y="570" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="605">5  RES</text>
+    <rect x="924" y="650" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="685">6  DC</text>
+    <rect x="924" y="730" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="765">7  CS</text>
+    <rect x="924" y="810" width="372" height="54" rx="8" fill="#1b789f"/><text x="950" y="845">8  BLK</text>
+  </g>
+
+  <g fill="none" stroke-width="8" stroke-linecap="round">
+    <path d="M504 277 C650 277 760 277 924 277" stroke="#20252a"/>
+    <path d="M504 357 C650 357 760 357 924 357" stroke="#e33131"/>
+    <path d="M504 437 C650 437 760 437 924 437" stroke="#2a78ff"/>
+    <path d="M504 517 C650 517 760 517 924 517" stroke="#24cba8"/>
+    <path d="M504 597 C650 597 760 597 924 597" stroke="#ae54ff"/>
+    <path d="M504 677 C650 677 760 677 924 677" stroke="#ff9c28"/>
+    <path d="M504 757 C650 757 760 757 924 757" stroke="#ffe32a"/>
+    <path d="M504 837 C650 837 760 837 924 837" stroke="#d867ff"/>
+  </g>
+  <g font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" fill="#34434c">
+    <text x="714" y="258" text-anchor="middle">GND → GND</text>
+    <text x="714" y="338" text-anchor="middle">3V3 → VCC</text>
+    <text x="714" y="418" text-anchor="middle">GPIO12 → SCL / SCK</text>
+    <text x="714" y="498" text-anchor="middle">GPIO11 → SDA / MOSI</text>
+    <text x="714" y="578" text-anchor="middle">GPIO14 → RES</text>
+    <text x="714" y="658" text-anchor="middle">GPIO13 → DC</text>
+    <text x="714" y="738" text-anchor="middle">GPIO10 → CS</text>
+    <text x="714" y="818" text-anchor="middle">按屏幕模块规格 → BLK</text>
+  </g>
+
+  <rect x="70" y="895" width="1260" height="64" rx="14" fill="#fff5d8" stroke="#e5b83c" stroke-width="3"/>
+  <text x="94" y="923" fill="#6f5200" font-family="Arial, Microsoft YaHei, sans-serif" font-size="18" font-weight="700">BLK 背光按模块规格连接，固件不占用 GPIO 驱动 BLK。</text>
+  <text x="94" y="948" fill="#6f5200" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16">4-SPI 只使用 SCK 和 MOSI，照片中的 SDA 不是 I²C SDA。</text>
+</svg>
+
