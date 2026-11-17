@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <rect width="1280" height="640" fill="#11181d"/>
+  <rect x="26" y="26" width="1228" height="588" rx="30" fill="#020506" stroke="#44535c" stroke-width="10"/>
+  <text x="72" y="104" fill="#ffffff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="54" font-weight="700">ChatGPT 额度监控</text>
+  <text x="1075" y="102" fill="#8dffb8" font-family="Arial, sans-serif" font-size="32">WiFi</text>
+  <line x1="72" y1="132" x2="1208" y2="132" stroke="#35434a" stroke-width="4"/>
+
+  <text x="72" y="226" fill="#ffffff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="48">5小时限额</text>
+  <text x="1000" y="228" fill="#2eff88" font-family="Arial, sans-serif" font-size="64" font-weight="700">100%</text>
+  <rect x="72" y="260" width="1136" height="32" rx="16" fill="#33464f"/>
+  <rect x="80" y="268" width="1120" height="16" rx="8" fill="#20ef83"/>
+
+  <text x="72" y="388" fill="#ffffff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="48">每周限额</text>
+  <text x="1027" y="390" fill="#42beff" font-family="Arial, sans-serif" font-size="64" font-weight="700">31%</text>
+  <rect x="72" y="422" width="1136" height="32" rx="16" fill="#33464f"/>
+  <rect x="80" y="430" width="347" height="16" rx="8" fill="#2eb9ff"/>
+
+  <text x="72" y="548" fill="#d8e7ed" font-family="Microsoft YaHei, Arial, sans-serif" font-size="34">实时同步 · 数据年龄 34 秒</text>
+  <text x="640" y="610" text-anchor="middle" fill="#8fa7b0" font-family="Microsoft YaHei, Arial, sans-serif" font-size="24">128×64 SSD1306 OLED 实际显示比例放大图</text>
+</svg>
+

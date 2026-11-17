@@ -37,7 +37,7 @@ DEFAULT_TASKS = [
         "status": "working",
     },
 ]
-VALID_STATUSES = {"completed", "working", "attention"}
+VALID_STATUSES = {"completed", "working", "attention", "error"}
 
 _latest_usage: dict[str, Any] = {}
 _lock = threading.Lock()
@@ -52,7 +52,11 @@ def clean_tasks(items: Any) -> list[dict[str, str]]:
     for raw in items[:3]:
         item = raw if isinstance(raw, dict) else {}
         status = str(item.get("status", "working"))
-        if status not in VALID_STATUSES:
+        if status in {"failed", "failure", "error"}:
+            status = "error"
+        elif status in {"authorization", "authorize", "manual_authorization", "waiting"}:
+            status = "attention"
+        elif status not in VALID_STATUSES:
             status = "attention"
         title = str(item.get("title", "未命名任务")).strip()[:48]
         detail = str(item.get("detail", "")).strip()[:120]
@@ -130,7 +134,7 @@ MANAGE_HTML = r"""<!doctype html>
 </head>
 <body>
   <h1>ChatGPT 额度摆件</h1>
-  <p class="hint">按最近更新时间填写三项不同任务。绿色表示已完成，黄色表示工作中，红色表示有错误或需要决策。保存后 ESP32 会在下一次轮询时刷新。</p>
+  <p class="hint">按最近更新时间填写三个不同项目。绿色表示已完成，橙色表示正在进行或需要手动授权，红色表示出错。保存后 ESP32 会在下一次轮询时刷新。</p>
   <div id="items"></div>
   <button id="save">保存三个任务</button><span id="msg"></span>
   <script>
@@ -154,7 +158,8 @@ MANAGE_HTML = r"""<!doctype html>
           <select id="status${index}">
             <option value="completed" ${task.status === "completed" ? "selected" : ""}>🟢 已完成</option>
             <option value="working" ${task.status === "working" ? "selected" : ""}>🟡 工作中</option>
-            <option value="attention" ${task.status === "attention" ? "selected" : ""}>🔴 有错误 / 需要决策</option>
+            <option value="attention" ${task.status === "attention" ? "selected" : ""}>🟠 需要手动授权</option>
+            <option value="error" ${task.status === "error" ? "selected" : ""}>🔴 出错</option>
           </select>
         </section>`).join("");
     }

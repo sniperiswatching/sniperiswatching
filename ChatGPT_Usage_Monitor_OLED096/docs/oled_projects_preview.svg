@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="680" viewBox="0 0 1280 680">
+  <rect width="1280" height="680" fill="#eaf0f3"/>
+  <text x="640" y="44" text-anchor="middle" fill="#17242b" font-family="Microsoft YaHei, Arial, sans-serif" font-size="28" font-weight="700">0.96 英寸 OLED 最近三个项目显示效果</text>
+
+  <rect x="42" y="78" width="920" height="460" rx="24" fill="#020506" stroke="#46565f" stroke-width="9"/>
+  <text x="86" y="137" fill="#fff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="43" font-weight="700">最近3个项目</text>
+  <text x="798" y="137" fill="#9dffbf" font-family="Arial, sans-serif" font-size="25">WiFi</text>
+  <line x1="86" y1="155" x2="918" y2="155" stroke="#3b4a51" stroke-width="4"/>
+
+  <rect x="86" y="178" width="832" height="87" fill="#10181d" stroke="#f0f4f5" stroke-width="4"/>
+  <rect x="103" y="206" width="27" height="27" fill="#f0f4f5"/>
+  <text x="150" y="233" fill="#fff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="35">额度数据同步</text>
+  <text x="770" y="233" fill="#fff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="31">已完成</text>
+
+  <rect x="86" y="278" width="832" height="87" fill="#10181d" stroke="#f0f4f5" stroke-width="4"/>
+  <rect x="103" y="306" width="27" height="27" fill="none" stroke="#f0f4f5" stroke-width="4"/>
+  <text x="150" y="333" fill="#fff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="35">ESP32-S3 Wi-Fi 联调</text>
+  <text x="770" y="333" fill="#fff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="31">进行中</text>
+
+  <rect x="86" y="378" width="832" height="87" fill="#10181d" stroke="#f0f4f5" stroke-width="4"/>
+  <rect x="103" y="406" width="27" height="27" fill="none" stroke="#f0f4f5" stroke-width="4"/>
+  <line x1="103" y1="406" x2="130" y2="433" stroke="#f0f4f5" stroke-width="4"/>
+  <line x1="130" y1="406" x2="103" y2="433" stroke="#f0f4f5" stroke-width="4"/>
+  <text x="150" y="433" fill="#fff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="35">OLED 接线检查</text>
+  <text x="770" y="433" fill="#fff" font-family="Microsoft YaHei, Arial, sans-serif" font-size="31">出错</text>
+
+  <text x="86" y="505" fill="#b8c9d0" font-family="Microsoft YaHei, Arial, sans-serif" font-size="24">实际单色 OLED 使用标记和文字区分状态</text>
+
+  <rect x="1000" y="130" width="220" height="290" rx="18" fill="#fff" stroke="#b7c6cd" stroke-width="3"/>
+  <text x="1110" y="168" text-anchor="middle" fill="#1d2b32" font-family="Microsoft YaHei, Arial, sans-serif" font-size="22" font-weight="700">颜色语义</text>
+  <rect x="1034" y="202" width="34" height="34" rx="8" fill="#19d779"/>
+  <text x="1085" y="228" fill="#25343b" font-family="Microsoft YaHei, Arial, sans-serif" font-size="21">已完成</text>
+  <rect x="1034" y="270" width="34" height="34" rx="8" fill="#ffad20"/>
+  <text x="1085" y="296" fill="#25343b" font-family="Microsoft YaHei, Arial, sans-serif" font-size="21">进行中 / 待授权</text>
+  <rect x="1034" y="338" width="34" height="34" rx="8" fill="#f04451"/>
+  <text x="1085" y="364" fill="#25343b" font-family="Microsoft YaHei, Arial, sans-serif" font-size="21">出错</text>
+
+  <text x="640" y="622" text-anchor="middle" fill="#42545d" font-family="Microsoft YaHei, Arial, sans-serif" font-size="21">项目内容来自电脑端 pc_bridge/tasks.json 或 /manage 页面</text>
+</svg>
+

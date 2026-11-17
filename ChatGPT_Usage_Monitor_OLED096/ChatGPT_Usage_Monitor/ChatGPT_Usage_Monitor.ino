@@ -2,9 +2,10 @@
   ChatGPT Usage Monitor - 0.96 inch OLED edition
   Hardware: ESP32-S3 + 0.96 inch SSD1306 128x64 I2C OLED
 
-  The OLED shows the two quota cards from the supplied reference:
+  The OLED shows the two quota cards and a rotating recent-project page from the supplied reference:
     - 5-hour limit
     - weekly limit
+    - three recent projects with completed, working/authorization, or error status
 
   The usage values come from the local PC bridge. The Edge extension
   forwards only the visible values from the signed-in ChatGPT Usage page.
@@ -52,7 +53,24 @@ uint32_t lastDrawMs = 0;
 uint32_t lastReconnectMs = 0;
 uint32_t pageStartedMs = 0;
 bool hasFreshSnapshot = false;
-bool resetPage = false;
+enum DisplayPage : uint8_t {
+  USAGE_PAGE = 0,
+  RESET_PAGE = 1,
+  TASKS_PAGE = 2
+};
+
+DisplayPage displayPage = USAGE_PAGE;
+
+struct ProjectItem {
+  String title;
+  String status;
+};
+
+ProjectItem recentProjects[3] = {
+  {"暂无项目", "working"},
+  {"暂无项目", "working"},
+  {"暂无项目", "working"}
+};
 
 const uint8_t *fontChinese() {
   return u8g2_font_wqy12_t_gb2312;
@@ -86,9 +104,9 @@ void drawUtf8(int x, int baseline, const String &value, const uint8_t *font) {
   oled.drawUTF8(x, baseline, value.c_str());
 }
 
-void drawHeader() {
+void drawHeader(const char *title) {
   oled.setFont(fontChinese());
-  drawUtf8(0, 10, "ChatGPT 额度监控", fontChinese());
+  drawUtf8(0, 10, title, fontChinese());
   oled.drawHLine(0, 13, 128);
 
   const bool connected = WiFi.status() == WL_CONNECTED;
@@ -132,7 +150,7 @@ void drawStatusLine() {
 
 void renderUsagePage() {
   oled.clearBuffer();
-  drawHeader();
+  drawHeader("ChatGPT 额度监控");
   drawQuotaRow(15, "5小时限额", fiveHourRemaining);
   drawQuotaRow(38, "每周限额", weeklyRemaining);
   drawStatusLine();
@@ -147,18 +165,64 @@ void drawResetRow(int y, const char *label, const String &resetText) {
 
 void renderResetPage() {
   oled.clearBuffer();
-  drawHeader();
+  drawHeader("ChatGPT 重置时间");
   drawResetRow(29, "5小时重置", fiveHourReset);
   drawResetRow(50, "每周重置", weeklyReset);
   drawStatusLine();
   oled.sendBuffer();
 }
 
+String projectStatusLabel(const String &status) {
+  if (status == "completed") return "已完成";
+  if (status == "error") return "出错";
+  if (status == "attention") return "待授权";
+  return "进行中";
+}
+
+void drawProjectMarker(int x, int y, const String &status) {
+  if (status == "completed") {
+    oled.drawBox(x, y, 7, 7);
+    return;
+  }
+
+  if (status == "error") {
+    oled.drawFrame(x, y, 8, 8);
+    oled.drawLine(x, y, x + 7, y + 7);
+    oled.drawLine(x + 7, y, x, y + 7);
+    return;
+  }
+
+  oled.drawFrame(x, y, 8, 8);
+}
+
+void drawProjectRow(int y, const ProjectItem &project) {
+  oled.drawFrame(0, y, 128, 14);
+  drawProjectMarker(2, y + 3, project.status);
+
+  const String title = fitUtf8(project.title, 64, fontChinese());
+  drawUtf8(13, y + 11, title, fontChinese());
+
+  const String label = fitUtf8(projectStatusLabel(project.status), 48, fontChinese());
+  drawUtf8(78, y + 11, label, fontChinese());
+}
+
+void renderProjectsPage() {
+  oled.clearBuffer();
+  drawHeader("最近3个项目");
+  drawProjectRow(15, recentProjects[0]);
+  drawProjectRow(30, recentProjects[1]);
+  drawProjectRow(45, recentProjects[2]);
+  drawStatusLine();
+  oled.sendBuffer();
+}
+
 void render() {
-  if (resetPage) {
+  if (displayPage == USAGE_PAGE) {
+    renderUsagePage();
+  } else if (displayPage == RESET_PAGE) {
     renderResetPage();
   } else {
-    renderUsagePage();
+    renderProjectsPage();
   }
 }
 
@@ -210,6 +274,26 @@ void fetchUsage() {
   const int five = doc["five_hour_remaining_pct"] | -1;
   const int week = doc["weekly_remaining_pct"] | -1;
   const uint32_t age = doc["age_seconds"] | 999999UL;
+
+  JsonArray projectArray = doc["tasks"].as<JsonArray>();
+  if (!projectArray.isNull()) {
+    for (int i = 0; i < 3; ++i) {
+      if (i < static_cast<int>(projectArray.size())) {
+        JsonObject item = projectArray[i].as<JsonObject>();
+        recentProjects[i].title = item["title"] | "未命名项目";
+        recentProjects[i].status = item["status"] | "working";
+        if (recentProjects[i].status != "completed" &&
+            recentProjects[i].status != "working" &&
+            recentProjects[i].status != "attention" &&
+            recentProjects[i].status != "error") {
+          recentProjects[i].status = "attention";
+        }
+      } else {
+        recentProjects[i].title = "暂无项目";
+        recentProjects[i].status = "working";
+      }
+    }
+  }
 
   if (!valid || five < 0 || five > 100 || week < 0 || week > 100) {
     fiveHourRemaining = -1;
@@ -279,7 +363,7 @@ void loop() {
 
   if (now - pageStartedMs >= PAGE_MS) {
     pageStartedMs = now;
-    resetPage = !resetPage;
+    displayPage = static_cast<DisplayPage>((static_cast<uint8_t>(displayPage) + 1) % 3);
   }
 
   if (now - lastDrawMs >= DRAW_MS) {

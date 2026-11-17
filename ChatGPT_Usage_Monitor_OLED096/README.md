@@ -5,6 +5,7 @@
 - 第一张照片提供界面方向，保留 ChatGPT、5 小时限额、每周限额和深色卡片式显示。
 - 第二张照片提供接线阅读方式。0.96 英寸 OLED 使用 I²C 四线接口，所以只保留 GND、VCC、SCL、SDA。
 - 屏幕上同时显示两个剩余百分比。每 6 秒切换到重置时间页，再切回额度页。
+- 屏幕每 6 秒切换到最近三个项目页，显示项目名称和项目状态。
 - ESP32-S3 通过 Wi-Fi 每 15 秒从电脑端桥接服务读取一次数据。
 - 电脑端桥接服务接收 Edge 中已经显示的 ChatGPT Usage 页面文字，不读取密码、Cookie 或 Token。
 
@@ -28,7 +29,11 @@
     │  └─ background.js
     └─ docs/
        ├─ effect_mockup.svg
-       └─ wiring_diagram.svg
+       ├─ wiring_diagram.svg
+       ├─ oled_screen_preview.svg
+       ├─ oled_screen_preview.png
+       ├─ oled_projects_preview.svg
+       └─ oled_projects_preview.png
 
 ## OLED 接线
 
@@ -48,6 +53,18 @@ OLED 的地址默认写成 0x3C。如果屏幕完全没有响应，可以把固�
 ![OLED 摆件效果图](docs/effect_mockup.svg)
 
 ![OLED 接线图](docs/wiring_diagram.svg)
+
+![OLED 屏幕显示预览](docs/oled_screen_preview.svg)
+
+![最近三个项目显示预览](docs/oled_projects_preview.svg)
+
+项目状态的颜色语义如下：
+
+- 绿色表示已完成。
+- 橙色表示正在进行或需要手动授权。
+- 红色表示出错。
+
+SSD1306 0.96 英寸 OLED 是单色屏幕，实际硬件使用实心标记、空心标记、叉号和状态文字区分三种状态。电脑端项目管理页面和效果图保留绿色、橙色、红色视觉区分。
 
 ## Arduino IDE
 
@@ -118,6 +135,13 @@ OLED 的地址默认写成 0x3C。如果屏幕完全没有响应，可以把固�
 
 - 5小时重置。
 - 每周重置。
+
+项目页会显示三个最近项目。每一行包含项目名称和状态文字：
+
+- 已完成
+- 进行中
+- 待授权
+- 出错
 
 没有可用数据时屏幕显示 --%，并标记“等待 Usage 数据”或“电脑桥接离线”。
 

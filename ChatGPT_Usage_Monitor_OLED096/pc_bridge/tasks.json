@@ -1,18 +1,18 @@
 [
   {
-    "title": "Arduino 工程完善",
-    "detail": "完成 ST7789 显示与通信功能",
+    "title": "额度数据同步",
+    "detail": "电脑桥接服务已收到 Usage 数据",
     "status": "completed"
   },
   {
-    "title": "ESP32-S3 联调测试",
-    "detail": "正在验证 Wi-Fi 与数据刷新",
+    "title": "ESP32-S3 Wi-Fi 联调",
+    "detail": "正在验证 Wi-Fi 与 OLED 刷新",
     "status": "working"
   },
   {
-    "title": "背光 BLK 接线确认",
-    "detail": "按屏幕模块规格确认背光供电",
-    "status": "attention"
+    "title": "OLED 接线检查",
+    "detail": "需要确认 OLED 地址和四线接法",
+    "status": "error"
   }
 ]
 
